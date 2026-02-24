@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Gift Card Code</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+min-height:100vh;
+padding:14px 10px;
+background:#eef2f6;
+overflow-x:hidden;
+}
+
+/* BACKGROUND */
+#bgCanvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-3;
+background:#eef2f6;
+}
+
+/* CONTAINER */
+.container{
+position:relative;
+max-width:400px;
+margin:auto;
+border-radius:18px;
+padding:16px 8px 22px;
+box-shadow:0 12px 30px rgba(0,0,0,.12);
+overflow:hidden;
+}
+
+.container::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(255,255,255,0.86);
+z-index:0;
+}
+
+.container>*{
+position:relative;
+z-index:1;
+}
+
+/* HEADER */
+.header{text-align:center}
+.header img{width:180px;margin-bottom:6px}
+.header h1{font-size:22px;font-weight:900}
+.header h2{font-size:14px;font-weight:800;margin-top:3px}
+
+/* CARDS */
+.cards{
+margin-top:18px;
+display:flex;
+flex-direction:column;
+gap:14px;
+align-items:center;
+}
+
+/* CARD (SMALL) */
+.card{
+position:relative;
+width:165px;      /* 👈 extra small */
+border-radius:14px;
+overflow:hidden;
+background:#fff;
+box-shadow:0 5px 12px rgba(0,0,0,.18);
+cursor:pointer;
+}
+
+.card img{
+width:100%;
+display:block;
+}
+
+/* FREE BUTTON */
+.free-btn{
+position:absolute;
+bottom:6px;
+left:50%;
+transform:translateX(-50%);
+background:linear-gradient(#ff4b4b,#c80000);
+color:#fff;
+border:none;
+border-radius:14px;
+padding:3px 20px;
+font-size:10.5px;
+font-weight:900;
+letter-spacing:1px;
+box-shadow:0 2px 0 #8b0000;
+pointer-events:none;
+}
+
+/* FOOTER */
+.footer{
+margin-top:18px;
+text-align:center;
+font-size:11px;
+color:#444;
+line-height:1.5;
+}
+
+.green{color:#19a030}
+</style>
+</head>
+
+<body>
+
+<canvas id="bgCanvas"></canvas>
+
+<div class="container">
+
+<div class="header">
+<img src="https://d13pxqgp3ixdbh.cloudfront.net/uploads/16456066916a38f76ae3e8e9726290ecaff38046f2.png">
+<h1>FREE GIFT CARD CODE</h1>
+<h2>CHOOSE YOUR CARD AND GET<br>THE CODE!</h2>
+</div>
+
+<div class="cards">
+
+<script>
+const cards = [
+"https://d13pxqgp3ixdbh.cloudfront.net/uploads/16454931964ae4b735cb411f2de267110a434da371.png",
+"https://d13pxqgp3ixdbh.cloudfront.net/uploads/16454932785b7b640a16766af88f84901c26fde30d.png",
+"https://d13pxqgp3ixdbh.cloudfront.net/uploads/1645606691ccf0a7bdb704e85631127b851dc0e997.png",
+"https://d13pxqgp3ixdbh.cloudfront.net/uploads/16456066913af5eafc1e8f4b67bdb9fad531193dd3.png",
+"https://d13pxqgp3ixdbh.cloudfront.net/uploads/16470047894e0de69106b6d5dc5add9dcfe186f25e.png",
+"https://d13pxqgp3ixdbh.cloudfront.net/uploads/16456066910ad995c478735eeb59daf47640f653e3.png",
+"https://d13pxqgp3ixdbh.cloudfront.net/uploads/1645606690dfe4c50e8dab48f102c825bbb91242c3.png",
+"https://d13pxqgp3ixdbh.cloudfront.net/uploads/1645606690bc25555bab4430a7900a83e596aef47d.png",
+"https://d13pxqgp3ixdbh.cloudfront.net/uploads/1645606690860b44915e39951ccef2f78aae356a84.png",
+"https://d13pxqgp3ixdbh.cloudfront.net/uploads/1645606690250c6c064370ec8752e020ce647d55a1.png",
+"https://d13pxqgp3ixdbh.cloudfront.net/uploads/164560669197909a539d87aced1c1438c4da903d01.png",
+"https://d13pxqgp3ixdbh.cloudfront.net/uploads/16456066916e6559533a5e292ccba8bb80f9149007.png"
+];
+
+cards.forEach((c,i)=>{
+document.write(`
+<div class="card" onclick="go(${i})">
+<img src="${c}">
+<button class="free-btn">FREE</button>
+</div>
+`);
+});
+
+function go(i){
+location.href = "generator.html?card=" + i;
+}
+</script>
+
+</div>
+
+<div class="footer">
+Server Status: <span class="green">Online</span> –
+Online Users: <span id="u">213</span>
+</div>
+
+</div>
+
+<script>
+/* USERS COUNT */
+let u=213;
+setInterval(()=>{
+u+=Math.floor(Math.random()*7)-3;
+if(u<120)u=120;
+if(u>999)u=999;
+document.getElementById("u").innerText=u;
+},2500);
+
+/* BACKGROUND NETWORK ANIMATION */
+const c=document.getElementById("bgCanvas");
+const x=c.getContext("2d");
+let w,h,p=[];
+
+function resize(){
+w=c.width=innerWidth;
+h=c.height=innerHeight;
+}
+addEventListener("resize",resize);
+resize();
+
+for(let i=0;i<45;i++){
+p.push({
+x:Math.random()*w,
+y:Math.random()*h,
+vx:(Math.random()-.5)*0.35,
+vy:(Math.random()-.5)*0.35
+});
+}
+
+(function anim(){
+x.clearRect(0,0,w,h);
+for(let i=0;i<p.length;i++){
+for(let j=i+1;j<p.length;j++){
+let dx=p[i].x-p[j].x;
+let dy=p[i].y-p[j].y;
+let d=Math.sqrt(dx*dx+dy*dy);
+if(d<110){
+x.strokeStyle=`rgba(0,160,200,${1-d/110})`;
+x.beginPath();
+x.moveTo(p[i].x,p[i].y);
+x.lineTo(p[j].x,p[j].y);
+x.stroke();
+}
+}
+p[i].x+=p[i].vx;
+p[i].y+=p[i].vy;
+if(p[i].x<0||p[i].x>w)p[i].vx*=-1;
+if(p[i].y<0||p[i].y>h)p[i].vy*=-1;
+x.fillStyle="rgba(0,160,200,.6)";
+x.beginPath();
+x.arc(p[i].x,p[i].y,2,0,Math.PI*2);
+x.fill();
+}
+requestAnimationFrame(anim);
+})();
+</script>
+
+</body>
+</html>
