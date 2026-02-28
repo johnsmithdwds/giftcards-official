@@ -4,173 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Generator</title>
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-
-body{
-background:#f1f1f1;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:15px;
-overflow:hidden;
-}
-
-#particles-page{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:0;
-}
-
-.page{
-position:relative;
-width:100%;
-max-width:420px;
-z-index:1;
-}
-
-#particles-container{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:0;
-border-radius:20px;
-opacity:0.3;
-pointer-events:none;
-}
-
-.container{
-position:relative;
-background:rgba(255,255,255,0.9);
-border-radius:20px;
-padding:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.15);
-text-align:center;
-overflow:hidden;
-z-index:1;
-transition:all 0.3s ease;
-}
-
+body{margin:0;padding:0;font-family:Arial;background:#f1f1f1;display:flex;justify-content:center;align-items:center;min-height:100vh;}
+.container{position:relative;width:100%;max-width:420px;background:rgba(255,255,255,0.9);border-radius:20px;padding:20px;text-align:center;box-shadow:0 10px 25px rgba(0,0,0,0.15);z-index:1;}
 .header img{width:180px;margin-bottom:10px}
-h1{font-size:22px;margin-bottom:15px}
+h1{font-size:22px;margin-bottom:15px;}
+#stage{min-height:160px;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+.temp-code{font-size:16px;font-weight:bold;letter-spacing:1px;white-space:nowrap;margin-bottom:10px;}
+.card-img{width:150px;border-radius:14px;box-shadow:0 6px 12px rgba(0,0,0,.2);margin-bottom:10px;}
+button{display:none;margin-top:15px;padding:13px 30px;border:none;border-radius:12px;background:#e60023;color:#fff;font-size:16px;font-weight:bold;cursor:pointer;box-shadow:0 5px 0 #b0001a;}
+.status{margin-top:18px;font-size:13px;color:#333;}
+.footer{margin-top:12px;font-size:11px;color:#777;}
 
-#stage{
-min-height:160px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-transition:all 0.3s ease;
-}
-
-.temp-code{
-font-size:16px;
-font-weight:bold;
-letter-spacing:1px;
-white-space:nowrap;
-transition:all 0.2s ease;
-}
-
-.card-img{
-width:150px;
-border-radius:14px;
-box-shadow:0 6px 12px rgba(0,0,0,.2);
-transition:all 0.3s ease;
-}
-
-@keyframes tap{
-0%{transform:scale(1)}
-50%{transform:scale(.9)}
-100%{transform:scale(1)}
-}
-
-button{
-display:none;
-margin-top:15px;
-padding:13px 30px;
-border:none;
-border-radius:12px;
-background:#e60023;
-color:#fff;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 5px 0 #b0001a;
-animation:tap .8s infinite;
-transition:all 0.2s ease;
-}
-
-button:hover{
-transform:scale(1.05);
-}
-
-.status{margin-top:18px;font-size:13px}
-.green{color:#00c853;font-weight:bold}
-.footer{margin-top:12px;font-size:11px;color:#777}
-
-/* POPUP LOCKER HIGH-CONVERTING */
+/* POPUP LOCKER */
 #lockerPopup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-backdrop-filter:blur(6px);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:9999;
-opacity:0;
-pointer-events:none;
-transition:opacity 0.3s ease;
+position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:none;justify-content:center;align-items:center;z-index:9999;
 }
-
-#lockerPopup.active{
-opacity:1;
-pointer-events:all;
-}
-
-#lockerBox{
-width:95%;
-max-width:400px;
-height:520px;
-background:#fff;
-border-radius:14px;
-overflow:hidden;
-position:relative;
-box-shadow:0 5px 20px rgba(0,0,0,0.5);
-transform:scale(0.8);
-transition:transform 0.3s ease;
-}
-
-#lockerPopup.active #lockerBox{
-transform:scale(1);
-}
-
-#lockerBox iframe{
-width:100%;
-height:100%;
-border:none;
-}
+#lockerBox{width:95%;max-width:400px;height:520px;background:#fff;border-radius:14px;overflow:hidden;position:relative;}
+#lockerBox iframe{width:100%;height:100%;border:none;}
 </style>
 </head>
 <body>
 
-<div id="particles-page"></div>
-
-<div class="page">
-<div id="particles-container"></div>
-
 <div class="container">
-
 <div class="header">
 <img src="https://d13pxqgp3ixdbh.cloudfront.net/uploads/16456066916a38f76ae3e8e9726290ecaff38046f2.png">
 <h1>FREE GIFT CARD CODE</h1>
@@ -181,15 +37,10 @@ border:none;
 <button id="unlockBtn">Unlock Last Code</button>
 
 <div class="status">
-Server Status: <span class="green">Online</span> —
-Online Users: <span id="users">223</span>
+Server Status: <span class="green">Online</span> — Online Users: <span id="users">223</span>
 </div>
 
-<div class="footer">
-Copyright © Free Gift Card Code
-</div>
-
-</div>
+<div class="footer">Copyright © Free Gift Card Code</div>
 </div>
 
 <!-- LOCKER POPUP -->
@@ -199,17 +50,8 @@ Copyright © Free Gift Card Code
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script>
-// Full Page Particles
-particlesJS("particles-page",{particles:{number:{value:80},color:{value:"#00c853"},shape:{type:"circle"},opacity:{value:0.6},size:{value:3},line_linked:{enable:true,distance:140,color:"#00c853",opacity:0.4,width:1},move:{enable:true,speed:1}}});
-
-// Container Particles
-particlesJS("particles-container",{particles:{number:{value:40},color:{value:"#00c853"},shape:{type:"circle"},opacity:{value:0.25},size:{value:2.5},line_linked:{enable:true,distance:80,color:"#00c853",opacity:0.25,width:1},move:{enable:true,speed:0.5}}});
-</script>
-
-<script>
-/* 12 Card List */
+// 12 Cards
 const cards=[
 "https://d13pxqgp3ixdbh.cloudfront.net/uploads/16454931964ae4b735cb411f2de267110a434da371.png",
 "https://d13pxqgp3ixdbh.cloudfront.net/uploads/16454932785b7b640a16766af88f84901c26fde30d.png",
@@ -224,15 +66,13 @@ const cards=[
 "https://d13pxqgp3ixdbh.cloudfront.net/uploads/164560669197909a539d87aced1c1438c4da903d01.png",
 "https://d13pxqgp3ixdbh.cloudfront.net/uploads/16456066916e6559533a5e292ccba8bb80f9149007.png"
 ];
-
-let i=parseInt(new URLSearchParams(location.search).get("card"));
-if(isNaN(i)||!cards[i]) i=Math.floor(Math.random()*12);
+let i=Math.floor(Math.random()*12);
 
 const stage=document.getElementById("stage");
 const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 const gen=n=>Array.from({length:n},()=>chars[Math.floor(Math.random()*chars.length)]).join("");
 
-// Step 1: Suspense code animation
+// Suspense code
 let temp=document.createElement("div");
 temp.className="temp-code";
 stage.appendChild(temp);
@@ -243,56 +83,41 @@ temp.innerText=`${gen(4)}-${gen(4)}-${gen(4)}-${gen(4)}`;
 count++;
 if(count===10){
 clearInterval(fast);
-
-// Step 2: Show card
 setTimeout(()=>{
 stage.innerHTML="";
 let card=document.createElement("img");
 card.src=cards[i];
 card.className="card-img";
 stage.appendChild(card);
-
-// Step 3: Final code
 setTimeout(()=>{
 let final=document.createElement("div");
 final.className="temp-code";
-final.style.marginTop="12px";
 final.innerText=`${gen(4)}-${gen(4)}-${gen(4)}-####`;
 stage.appendChild(final);
-
-// Step 4: Show button
-setTimeout(()=>{
-unlockBtn.style.display="inline-block";
-},500);
-
-},600);
-
+setTimeout(()=>{document.getElementById("unlockBtn").style.display="inline-block";},300);
+},300);
 },300);
 }
 },120);
 
-// Online Users
+// Users
 let u=223;
-setInterval(()=>{
-u+=Math.floor(Math.random()*5)-2;
-u=Math.min(999,Math.max(150,u));
-users.innerText=u;
-},2000);
+setInterval(()=>{u+=Math.floor(Math.random()*5)-2;u=Math.min(999,Math.max(150,u));document.getElementById("users").innerText=u;},2000);
 
-/* Popup Locker */
+// Popup Locker
+const unlockBtn=document.getElementById("unlockBtn");
 const lockerPopup=document.getElementById("lockerPopup");
 const lockerFrame=document.getElementById("lockerFrame");
-const unlockBtn=document.getElementById("unlockBtn");
 
 unlockBtn.onclick=()=>{
-lockerPopup.classList.add("active");
+lockerPopup.style.display="flex";
 lockerFrame.src="https://best-offer.pages.dev/";
 };
 
 // Close on background click
 lockerPopup.onclick=(e)=>{
 if(e.target===lockerPopup){
-lockerPopup.classList.remove("active");
+lockerPopup.style.display="none";
 lockerFrame.src="";
 }
 };
