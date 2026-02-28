@@ -3,172 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Generator</title>
-
+<title>Generator Fixed</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-
-body{
-background:#f1f1f1;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:15px;
-overflow:hidden;
-}
-
-#particles-page{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:0;
-}
-
-.page{
-position:relative;
-width:100%;
-max-width:420px;
-z-index:1;
-}
-
-#particles-container{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:0;
-border-radius:20px;
-opacity:0.3;
-pointer-events:none;
-}
-
-.container{
-position:relative;
-background:rgba(255,255,255,0.9);
-border-radius:20px;
-padding:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.15);
-text-align:center;
-overflow:hidden;
-z-index:1;
-transition:all 0.3s ease;
-}
-
+body{background:#f1f1f1;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:15px;overflow:hidden;}
+.page{position:relative;width:100%;max-width:420px;z-index:1;}
+.container{position:relative;background:rgba(255,255,255,0.9);border-radius:20px;padding:20px;box-shadow:0 10px 25px rgba(0,0,0,.15);text-align:center;overflow:hidden;z-index:1;transition:all 0.3s ease;}
 .header img{width:180px;margin-bottom:10px}
 h1{font-size:22px;margin-bottom:15px}
-
-#stage{
-min-height:160px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-transition:all 0.3s ease;
-}
-
-.temp-code{
-font-size:16px;
-font-weight:bold;
-letter-spacing:1px;
-white-space:nowrap;
-transition:all 0.2s ease;
-}
-
-.card-img{
-width:150px;
-border-radius:14px;
-box-shadow:0 6px 12px rgba(0,0,0,.2);
-transition:all 0.3s ease;
-}
-
-@keyframes tap{
-0%{transform:scale(1)}
-50%{transform:scale(.9)}
-100%{transform:scale(1)}
-}
-
-button{
-display:none;
-margin-top:15px;
-padding:13px 30px;
-border:none;
-border-radius:12px;
-background:#e60023;
-color:#fff;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 5px 0 #b0001a;
-animation:tap .8s infinite;
-transition:all 0.2s ease;
-}
-
-button:hover{
-transform:scale(1.05);
-}
-
+#stage{min-height:160px;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:all 0.3s ease;}
+.temp-code{font-size:16px;font-weight:bold;letter-spacing:1px;white-space:nowrap;transition:all 0.2s ease;}
+.card-img{width:150px;border-radius:14px;box-shadow:0 6px 12px rgba(0,0,0,.2);transition:all 0.3s ease;}
+@keyframes tap{0%{transform:scale(1)}50%{transform:scale(.9)}100%{transform:scale(1)}}
+button{display:none;margin-top:15px;padding:13px 30px;border:none;border-radius:12px;background:#e60023;color:#fff;font-size:16px;font-weight:bold;cursor:pointer;box-shadow:0 5px 0 #b0001a;animation:tap .8s infinite;transition:all 0.2s ease;}
+button:hover{transform:scale(1.05);}
 .status{margin-top:18px;font-size:13px}
 .green{color:#00c853;font-weight:bold}
 .footer{margin-top:12px;font-size:11px;color:#777}
 
-/* POPUP LOCKER HIGH-CONVERTING */
-#lockerPopup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-backdrop-filter:blur(6px);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:9999;
-opacity:0;
-pointer-events:none;
-transition:opacity 0.3s ease;
-}
-
-#lockerPopup.active{
-opacity:1;
-pointer-events:all;
-}
-
-#lockerBox{
-width:95%;
-max-width:400px;
-height:520px;
-background:#fff;
-border-radius:14px;
-overflow:hidden;
-position:relative;
-box-shadow:0 5px 20px rgba(0,0,0,0.5);
-transform:scale(0.8);
-transition:transform 0.3s ease;
-}
-
-#lockerPopup.active #lockerBox{
-transform:scale(1);
-}
-
-#lockerBox iframe{
-width:100%;
-height:100%;
-border:none;
-}
+/* POPUP LOCKER */
+#lockerPopup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);backdrop-filter:blur(6px);display:flex;justify-content:center;align-items:center;z-index:9999;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
+#lockerPopup.active{opacity:1;pointer-events:all;}
+#lockerBox{width:95%;max-width:400px;height:520px;background:#fff;border-radius:14px;overflow:hidden;position:relative;box-shadow:0 5px 20px rgba(0,0,0,0.5);transform:scale(0.8);transition:transform 0.3s ease;}
+#lockerPopup.active #lockerBox{transform:scale(1);}
+#lockerBox iframe{width:100%;height:100%;border:none;}
 </style>
 </head>
 <body>
 
-<div id="particles-page"></div>
-
 <div class="page">
-<div id="particles-container"></div>
-
 <div class="container">
 
 <div class="header">
@@ -177,7 +40,6 @@ border:none;
 </div>
 
 <div id="stage"></div>
-
 <button id="unlockBtn">Unlock Last Code</button>
 
 <div class="status">
@@ -195,20 +57,12 @@ Copyright © Free Gift Card Code
 <!-- LOCKER POPUP -->
 <div id="lockerPopup">
   <div id="lockerBox">
-    <iframe id="lockerFrame"></iframe>
+    <iframe id="lockerFrame" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<script>
-// Full Page Particles
-particlesJS("particles-page",{particles:{number:{value:80},color:{value:"#00c853"},shape:{type:"circle"},opacity:{value:0.6},size:{value:3},line_linked:{enable:true,distance:140,color:"#00c853",opacity:0.4,width:1},move:{enable:true,speed:1}}});
 
-// Container Particles
-particlesJS("particles-container",{particles:{number:{value:40},color:{value:"#00c853"},shape:{type:"circle"},opacity:{value:0.25},size:{value:2.5},line_linked:{enable:true,distance:80,color:"#00c853",opacity:0.25,width:1},move:{enable:true,speed:0.5}}});
-</script>
-
-<script>
+  <script>
 /* CARD LIST */
 const cards=[
 "https://d13pxqgp3ixdbh.cloudfront.net/uploads/16454931964ae4b735cb411f2de267110a434da371.png",
@@ -297,8 +151,6 @@ lockerPopup.onclick=(e)=>{
         lockerFrame.src="";
     }
 };
-</script>
-
-</body>
+  </script>
+  </body>
 </html>
-
